@@ -19,4 +19,14 @@ public class AuctionLeagueServiceImpl implements AuctionLeagueService {
 		this.auctionLeagueRepository.save(newAuctionLeague);
 		return;
 	}
+	
+	@Override
+	public boolean existsByLeagueName(String leagueName) {		
+		if (this.auctionLeagueRepository.existsByLeagueName(leagueName)) {
+			return true;
+		} else {
+		return false;
+		}
+	}
 }
+

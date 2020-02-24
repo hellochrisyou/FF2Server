@@ -12,5 +12,5 @@ public interface AuctionLeagueRepository extends CrudRepository<AuctionLeague, S
      
     AuctionLeague findByLeagueName(String leagueName);
     List<AuctionLeague> findAll();
-    boolean existsByName(String name);
+    boolean existsByLeagueName(String name);
     }
