@@ -1,6 +1,6 @@
 package com.ff.auction.service;
 
-import dto.AuctionDto;
+import com.ff.auction.dto.AuctionDto;
 
 public interface AuctionPlayerService {
 	public void addPlayer(AuctionDto auctionDto);

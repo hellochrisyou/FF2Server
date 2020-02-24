@@ -6,8 +6,7 @@ import java.util.List;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
-
-import dto.CreateDto;
+import com.ff.auction.dto.CreateDto;
 
 @DynamoDBDocument
 public class AuctionTeam implements Serializable {

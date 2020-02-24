@@ -1,7 +1,7 @@
 package com.ff.auction.service;
 
-import dto.AuctionDto;
-import dto.CreateDto;
+import com.ff.auction.dto.AuctionDto;
+import com.ff.auction.dto.CreateDto;
 
 public interface AuctionTeamService {
 	

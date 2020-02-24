@@ -1,6 +1,6 @@
-package LiveAuction;
+package com.ff.auction.LiveAuction;
 
-import dto.AuctionDto;
+import com.ff.auction.dto.AuctionDto;
 
 public class LiveAuction {
 	private static final int BIDDELAY = 6000;

@@ -4,8 +4,7 @@ import java.io.Serializable;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
-
-import dto.AuctionDto;
+import com.ff.auction.dto.AuctionDto;
 
 @DynamoDBDocument
 public class AuctionPlayer implements Serializable {

@@ -4,15 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ff.auction.domain.AuctionLeague;
 import com.ff.auction.domain.AuctionPlayer;
+import com.ff.auction.dto.AuctionDto;
 import com.ff.auction.repository.AuctionLeagueRepository;
 import com.ff.auction.service.AuctionPlayerService;
-
-import dto.AuctionDto;
 
 public class AuctionPlayerServiceImpl implements AuctionPlayerService {
 
 	@Autowired
-	private AuctionLeagueRepository auctionLeagueRepository;
+	AuctionLeagueRepository auctionLeagueRepository;
 	
 	@Override
 	public void addPlayer(AuctionDto auctionDto) {

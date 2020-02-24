@@ -1,18 +1,16 @@
 package com.ff.auction.service.serviceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ff.auction.domain.AuctionLeague;
+import com.ff.auction.dto.CreateDto;
 import com.ff.auction.repository.AuctionLeagueRepository;
 import com.ff.auction.service.AuctionLeagueService;
-import com.ff.auction.service.AuctionTeamService;
 
-import dto.CreateDto;
-
+@Service
 public class AuctionLeagueServiceImpl implements AuctionLeagueService {
-
-	@Autowired
-	private AuctionTeamService auctionTeamService;
+	
 	@Autowired
 	private AuctionLeagueRepository auctionLeagueRepository;
 	

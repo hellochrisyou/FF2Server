@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ff</groupId>
-	<artifactId>Ff2DiscoveryServer</artifactId>
+	<artifactId>FF2Discovery</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Ff2DiscoveryServer</name>
+	<name>FF2Discovery</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
