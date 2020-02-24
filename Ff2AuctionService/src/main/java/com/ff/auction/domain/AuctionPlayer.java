@@ -11,38 +11,38 @@ public class AuctionPlayer implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private String playerName;
-	private String footballTeam;
-    private String position;
+	private String Name;
+	private String Team;
+    private String Position;
     
     public AuctionPlayer(){};
     
     public AuctionPlayer(AuctionDto auctionDto) {
-		this.playerName = auctionDto.getPlayerName();
-		this.footballTeam = auctionDto.getFootballTeam();
-		this.position = auctionDto.getPosition();
+		this.Name = auctionDto.getPlayerName();
+		this.Team = auctionDto.getFootballTeam();
+		this.Position = auctionDto.getPosition();
 	}
 
 	@DynamoDBAttribute
-	public String getPlayerName() {
-		return playerName;
+	public String getName() {
+		return Name;
 	}
 	@DynamoDBAttribute
-	public String getFootballTeam() {
-		return footballTeam;
+	public String getTeam() {
+		return Team;
 	}
 	@DynamoDBAttribute
 	public String getPosition() {
-		return position;
+		return Position;
 	}
-	public void setPlayerName(String playerName) {
-		this.playerName = playerName;
+	public void setName(String playerName) {
+		this.Name = playerName;
 	}
 	public void setTeam(String footballTeam) {
-		this.footballTeam = footballTeam;
+		this.Team = footballTeam;
 	}
 	public void setPosition(String position) {
-		this.position = position;
+		this.Position = position;
 	}
 
 }

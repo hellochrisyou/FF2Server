@@ -13,17 +13,17 @@ public class AuctionTeam implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private String teamName;
-	private String currentBudget;
-	private List<AuctionPlayer> auctionPlayers = new ArrayList<AuctionPlayer>();
+	private String Name;
+	private String CurrentBudget;
+	private List<AuctionPlayer> auctionPlayers;
 	
 
-	public AuctionTeam() {
+	public AuctionTeam() {		
 	}
 
 	public AuctionTeam(CreateDto createDto) {
-		this.teamName = createDto.getTeamName();
-		this.currentBudget = createDto.getTotalBudget();
+		this.Name = createDto.getTeamName();
+		this.CurrentBudget = createDto.getTotalBudget();
 	}
 
 	@DynamoDBAttribute
@@ -33,16 +33,16 @@ public class AuctionTeam implements Serializable {
 
 	@DynamoDBAttribute
 	public String getCurrentBudget() {
-		return currentBudget;
+		return CurrentBudget;
 	}
 
 	@DynamoDBAttribute
-	public String getTeamName() {
-		return teamName;
+	public String getName() {
+		return Name;
 	}
 
-	public void setTeamName(String teamName) {
-		this.teamName = teamName;
+	public void setName(String teamName) {
+		this.Name = teamName;
 	}
 
 	public void addAuctionPlayer(AuctionPlayer auctionPlayer) {
@@ -54,6 +54,6 @@ public class AuctionTeam implements Serializable {
 	}
 
 	public void setCurrentBudget(String currentBudget) {
-		this.currentBudget = currentBudget;
+		this.CurrentBudget = currentBudget;
 	}
 }

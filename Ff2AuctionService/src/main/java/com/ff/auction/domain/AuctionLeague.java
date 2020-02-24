@@ -13,40 +13,35 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import com.ff.auction.dto.CreateDto;
 
-@DynamoDBTable(tableName = "League")
+@DynamoDBTable(tableName = "AuctionLeague")
 public class AuctionLeague implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
 	private String leagueId;
-	private String leagueName;
-	private String draftTurn = "1";
-    private String PPR;    
-    private String maxPlayers;
-    private String totalBudget = "0";
-	private String status = "Created";
+	private String LeagueName;
+	private String DraftTurn = "1";
+	private String DraftRound = "1";
+    private String PPR;     
+    private String MaxPlayers;
+    private String TotalBudget = "0";
+	private String Status;
+	private String LeagueType = "Auction";
+    private String CurrentBid = "";
+    private String CurrentBidder = "";
+	
+    private List<AuctionTeam> auctionTeams;
     
-    private List<AuctionTeam> auctionTeams = new ArrayList<AuctionTeam>();
-    
-    public AuctionLeague() {}
+    public AuctionLeague() {
+    }
     
     public AuctionLeague(CreateDto createDto) {
-    	this.leagueName = createDto.getLeagueName();
+    	this.LeagueName = createDto.getLeagueName();
     	this.PPR = createDto.getPpr();
-		this.totalBudget = createDto.getTotalBudget();
-		this.maxPlayers =	 createDto.getMaxPlayers();
+		this.TotalBudget = createDto.getTotalBudget();
+		this.MaxPlayers =	 createDto.getMaxPlayers();
+		this.Status = "Created";
     }
-//    Double asDouble(Object o) {
-//		if (o != null) {
-//	    Double val = null;
-//	    if (o instanceof Number) {
-//	        val = ((Number) o).doubleValue();
-//	    }
-//	    return val;
-//	    } else {
-//	    	return null;
-//	    }
-//	}
     
     // Getters
     @NonNull
@@ -57,7 +52,7 @@ public class AuctionLeague implements Serializable {
 	}
     @DynamoDBAttribute
     public String getLeagueName() {
-        return this.leagueName;
+        return this.LeagueName;
     }
     @DynamoDBAttribute
     public String getPPR() {
@@ -65,11 +60,11 @@ public class AuctionLeague implements Serializable {
     } 
     @DynamoDBAttribute
     public String getTotalBudget() {
-        return this.totalBudget;
+        return this.TotalBudget;
     }    
     @DynamoDBAttribute
     public String getMaxPlayers() {
-        return this.maxPlayers;
+        return this.MaxPlayers;
     }
     @DynamoDBAttribute
     public List<AuctionTeam> getAuctionTeams() {
@@ -78,15 +73,32 @@ public class AuctionLeague implements Serializable {
     
     @DynamoDBAttribute
 	public String getDraftTurn() {
-		return draftTurn;
+		return DraftTurn;
 	}
     @DynamoDBAttribute
+   	public String getDraftRound() {
+   		return DraftRound;
+   	}
+    @DynamoDBAttribute
     public String getStatus() {
-    	return this.status;
+    	return this.Status;
     }
+    @DynamoDBAttribute
+	public String getLeagueType() {
+		return LeagueType;
+	}
+    @DynamoDBAttribute
+	public String getCurrentBid() {
+		return CurrentBid;
+	}
+    @DynamoDBAttribute
+	public String getCurrentBidder() {
+		return CurrentBidder;
+	}
+
 	public AuctionTeam getTeam(String teamName) {
     	for (AuctionTeam team : this.auctionTeams) {
-    		if (team.getTeamName() == teamName) {
+    		if (team.getName() == teamName) {
     			return team;
     		}
     	}
@@ -99,23 +111,26 @@ public class AuctionLeague implements Serializable {
     	this.auctionTeams.add(auctionTeams);
     }
 	public void setStatus(String status) {
-		this.status = status;
+		this.Status = status;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	public void setLeagueId(String leagueId) {
 		this.leagueId = leagueId;
 	}
 
+	public void setCurrentBid(String currentBid) {
+		CurrentBid = currentBid;
+	}
+
+	public void setCurrentBidder(String currentBidder) {
+		CurrentBidder = currentBidder;
+	}
+
 	public void setLeagueName(String leagueName) {
-		this.leagueName = leagueName;
+		this.LeagueName = leagueName;
 	}
 
 	public void setDraftTurn(String draftTurn) {
-		this.draftTurn = draftTurn;
+		this.DraftTurn = draftTurn;
 	}
 
 	public void setAuctionTeams(List<AuctionTeam> auctionTeams) {
@@ -123,17 +138,25 @@ public class AuctionLeague implements Serializable {
 	}
 	
 	public void setName(String leagueName) {
-		this.leagueName = leagueName;
+		this.LeagueName = leagueName;
 	}
     
+	public void setDraftRound(String draftRound) {
+		DraftRound = draftRound;
+	}
+
 	public void setPPR(String pPR) {
 		this.PPR = pPR;
 	}
     
+	public void setLeagueType(String leagueType) {
+		LeagueType = leagueType;
+	}
+
 	public void setTotalBudget(String totalBudget) {
-		this.totalBudget = totalBudget;
+		this.TotalBudget = totalBudget;
 	}
 	public void setMaxPlayers(String maxPlayers) {
-		this.maxPlayers = maxPlayers;
+		this.MaxPlayers = maxPlayers;
 	}
 }

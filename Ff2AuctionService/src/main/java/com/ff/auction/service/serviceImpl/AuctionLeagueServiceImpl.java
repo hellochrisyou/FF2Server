@@ -1,5 +1,7 @@
 package com.ff.auction.service.serviceImpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,12 @@ public class AuctionLeagueServiceImpl implements AuctionLeagueService {
 		return;
 	}
 	
+	@Override
+	public List<AuctionLeague> getAllLeagues() {
+		List<AuctionLeague> auctionLeague =  auctionLeagueRepository.findAll();
+		return auctionLeague;
+	}
+
 	@Override
 	public boolean existsByLeagueName(String leagueName) {		
 		if (this.auctionLeagueRepository.existsByLeagueName(leagueName)) {
