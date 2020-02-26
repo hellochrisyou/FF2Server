@@ -35,8 +35,8 @@ public class AuctionPlayer implements Serializable {
 	public String getPosition() {
 		return Position;
 	}
-	public void setName(String playerName) {
-		this.Name = playerName;
+	public void setName(String name) {
+		this.Name = name;
 	}
 	public void setTeam(String footballTeam) {
 		this.Team = footballTeam;

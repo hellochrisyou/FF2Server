@@ -1,6 +1,6 @@
 package com.ff.auction.dto;
 
-public class CreateDto {
+public class CreateAuctionDto {
 	private String leagueName;
 	private String teamName;
 	private String totalBudget;
@@ -8,7 +8,7 @@ public class CreateDto {
 	private String maxPlayers;
 
 	
-	CreateDto() {};
+	public CreateAuctionDto() {};
 
 	public String getLeagueName() {
 		return leagueName;

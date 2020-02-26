@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ff.auction.domain.AuctionLeague;
-import com.ff.auction.dto.CreateDto;
+import com.ff.auction.dto.CreateAuctionDto;
 import com.ff.auction.repository.AuctionLeagueRepository;
 import com.ff.auction.service.AuctionLeagueService;
 
@@ -16,8 +16,8 @@ public class AuctionLeagueServiceImpl implements AuctionLeagueService {
 	@Autowired
 	private AuctionLeagueRepository auctionLeagueRepository;
 	
-	public void createAuctionLeague(CreateDto createDto) {
-		AuctionLeague newAuctionLeague = new AuctionLeague(createDto);
+	public void createAuctionLeague(CreateAuctionDto createAuctionDto) {
+		AuctionLeague newAuctionLeague = new AuctionLeague(createAuctionDto);
 		this.auctionLeagueRepository.save(newAuctionLeague);
 		return;
 	}

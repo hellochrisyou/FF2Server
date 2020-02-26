@@ -8,9 +8,9 @@ import org.springframework.data.repository.CrudRepository;
 import com.ff.snake.domain.SnakeLeague;
 
 @EnableScan
-public interface LeagueRepository extends CrudRepository<SnakeLeague, String> {
+public interface SnakeLeagueRepository extends CrudRepository<SnakeLeague, String> {
      
-	SnakeLeague findByName(String id);
+	SnakeLeague findByLeagueName(String id);
     List<SnakeLeague> findAll();
-    boolean existsByName(String name);
+    boolean existsByLeagueName(String name);
     }

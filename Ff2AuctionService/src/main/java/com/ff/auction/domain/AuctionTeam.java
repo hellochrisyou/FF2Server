@@ -1,19 +1,18 @@
 package com.ff.auction.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
-import com.ff.auction.dto.CreateDto;
+import com.ff.auction.dto.CreateAuctionDto;
 
 @DynamoDBDocument
 public class AuctionTeam implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private String Name;
+	private String TeamName;
 	private String CurrentBudget;
 	private List<AuctionPlayer> auctionPlayers;
 	
@@ -21,9 +20,9 @@ public class AuctionTeam implements Serializable {
 	public AuctionTeam() {		
 	}
 
-	public AuctionTeam(CreateDto createDto) {
-		this.Name = createDto.getTeamName();
-		this.CurrentBudget = createDto.getTotalBudget();
+	public AuctionTeam(CreateAuctionDto createAuctionDto) {
+		this.TeamName = createAuctionDto.getTeamName();
+		this.CurrentBudget = createAuctionDto.getTotalBudget();
 	}
 
 	@DynamoDBAttribute
@@ -37,12 +36,12 @@ public class AuctionTeam implements Serializable {
 	}
 
 	@DynamoDBAttribute
-	public String getName() {
-		return Name;
+	public String getTeamName() {
+		return TeamName;
 	}
 
-	public void setName(String teamName) {
-		this.Name = teamName;
+	public void setTeamName(String teamName) {
+		this.TeamName = teamName;
 	}
 
 	public void addAuctionPlayer(AuctionPlayer auctionPlayer) {

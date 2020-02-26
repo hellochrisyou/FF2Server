@@ -1,4 +1,4 @@
-package com.ff.auction.controller;
+package com.ff.snake.controller;
 
 import java.util.List;
 
@@ -11,33 +11,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ff.auction.domain.AuctionLeague;
-import com.ff.auction.dto.CreateDto;
-import com.ff.auction.service.AuctionLeagueService;
+import com.ff.snake.domain.SnakeLeague;
+import com.ff.snake.dto.CreateSnakeDto;
+import com.ff.snake.service.SnakeLeagueService;
 
 @CrossOrigin(maxAge = 3600)
 @RestController
-@RequestMapping("/league")
-public class LeagueController {
+@RequestMapping("/snake")
+public class SnakeDraftController {
 	
 	@Autowired
-	private AuctionLeagueService auctionLeagueService;
+	private SnakeLeagueService snakeLeagueService;
 	
 	@CrossOrigin	
-	@PostMapping(value = "/createLeague/", consumes = "application/json", produces = "application/json")
-	public void createLeague(@RequestBody CreateDto createDto) {
-		this.auctionLeagueService.createAuctionLeague(createDto);
+	@PostMapping(value = "/createSnakeLeague/", consumes = "application/json", produces = "application/json")
+	public void createLeague(@RequestBody CreateSnakeDto createSnakeDto) {
+		this.snakeLeagueService.createSnakeLeague(createSnakeDto);
 	}
 	
 	@CrossOrigin	
 	@GetMapping(value = "/getAllLeagues/", consumes = "application/json", produces = "application/json")
-	public List<AuctionLeague> getAllLeagues() {
-		return this.auctionLeagueService.getAllLeagues();
+	public List<SnakeLeague> getAllLeagues() {
+		return this.snakeLeagueService.getAllLeagues();
 	}
 	
 	@CrossOrigin	
 	@GetMapping(value = "/existsByLeagueName/{name}", consumes = "application/json", produces = "application/json")
 	public boolean leagueNameExists(@PathVariable String name) {
-		return this.auctionLeagueService.existsByLeagueName(name);
+		return this.snakeLeagueService.existsByLeagueName(name);
 	}
 }
