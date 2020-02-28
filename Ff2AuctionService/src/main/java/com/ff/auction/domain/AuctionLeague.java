@@ -22,8 +22,8 @@ public class AuctionLeague implements Serializable {
 	private String DraftRound = "1";
     private String PPR;     
     private String MaxPlayers;
-    private String TotalBudget = "0";
-	private String Status;
+    private String TotalBudget;
+	private String Status = "Created";
 	private String LeagueType = "Auction";
     private String CurrentBid = "";
     private String CurrentBidder = "";
@@ -35,8 +35,8 @@ public class AuctionLeague implements Serializable {
     
     public AuctionLeague(CreateAuctionDto createAuctionDto) {
     	this.LeagueName = createAuctionDto.getLeagueName();
-    	this.PPR = createAuctionDto.getPpr();
-		this.TotalBudget = createAuctionDto.getTotalBudget();
+    	this.PPR = createAuctionDto.getPPR();
+		this.TotalBudget = createAuctionDto.getBudget();
 		this.MaxPlayers =	 createAuctionDto.getMaxPlayers();
 		this.Status = "Created";
     }

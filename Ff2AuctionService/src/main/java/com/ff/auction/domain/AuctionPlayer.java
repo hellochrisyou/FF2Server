@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
-import com.ff.auction.dto.AuctionDto;
 
 @DynamoDBDocument
 public class AuctionPlayer implements Serializable {
@@ -17,11 +16,11 @@ public class AuctionPlayer implements Serializable {
     
     public AuctionPlayer(){};
     
-    public AuctionPlayer(AuctionDto auctionDto) {
-		this.Name = auctionDto.getPlayerName();
-		this.Team = auctionDto.getFootballTeam();
-		this.Position = auctionDto.getPosition();
-	}
+//    public AuctionPlayer(AuctionDto auctionDto) {
+//		this.Name = auctionDto.getPlayerName();
+//		this.Team = auctionDto.getFootballTeam();
+//		this.Position = auctionDto.getPosition();
+//	}
 
 	@DynamoDBAttribute
 	public String getName() {
