@@ -1,6 +1,7 @@
 package com.ff.auction.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.lang.NonNull;
@@ -29,7 +30,7 @@ public class AuctionLeague implements Serializable {
 	private String CurrentBid = "";
 	private String CurrentBidder = "";
 
-	private List<AuctionTeam> auctionTeams;
+	private List<AuctionTeam> auctionTeams = new ArrayList<AuctionTeam>();
 
 	public AuctionLeague() {
 	}

@@ -39,8 +39,8 @@ public class AuctionTeamController {
 //	}
 	
 	@CrossOrigin	
-	@GetMapping(value = "/teamNameExist/{name}", consumes = "application/json", produces = "application/json")
-	public boolean teamNameExist(@PathVariable String name) {
+	@GetMapping(value = "/teamNameExists/{name}", consumes = "application/json", produces = "application/json")
+	public boolean teamNameExists(@PathVariable String name) {
 		return this.auctionTeamService.teamNameExists(name);
 	}
 }

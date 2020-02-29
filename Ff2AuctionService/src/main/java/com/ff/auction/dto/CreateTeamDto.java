@@ -8,11 +8,9 @@ public class CreateTeamDto {
 	private String budget;
 	private String ppr;
 	private String maxPlayers;
-
+	private String leagueType;
 	
 	CreateTeamDto() {};
-
-	
 	
 	public String getEmail() {
 		return email;
@@ -20,6 +18,14 @@ public class CreateTeamDto {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getLeagueType() {
+		return leagueType;
+	}
+
+	public void setLeagueType(String leagueType) {
+		this.leagueType = leagueType;
 	}
 
 	public String getLeagueName() {

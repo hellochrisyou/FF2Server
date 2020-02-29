@@ -27,6 +27,9 @@ public class AuctionTeamServiceImpl implements AuctionTeamService{
 		List<AuctionLeague> persistentLeague= this.auctionLeagueRepository.findAll();
 		for (AuctionLeague league: persistentLeague) {
 			List<AuctionTeam> teams = league.getAuctionTeams();
+			if (teams == null) {
+				continue;
+			}
 			for (AuctionTeam team: teams) {
 				if (team.getTeamName() == teamName) {
 					return true;
