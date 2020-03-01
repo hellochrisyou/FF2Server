@@ -18,7 +18,7 @@ import com.ff.auction.service.AuctionLeagueService;
 @CrossOrigin(maxAge = 3600)
 @RestController
 @RequestMapping("/auction")
-public class AuctionDraftController {
+public class AuctionLeagueController {
 	
 	@Autowired
 	private AuctionLeagueService auctionLeagueService;
@@ -30,9 +30,21 @@ public class AuctionDraftController {
 	}
 	
 	@CrossOrigin	
-	@GetMapping(value = "/getAllLeagues/", consumes = "application/json", produces = "application/json")
-	public List<AuctionLeague> getAllLeagues() {
-		return this.auctionLeagueService.getAllLeagues();
+	@PostMapping(value = "/getAllLeagues/", consumes = "application/json", produces = "application/json")
+	public List<AuctionLeague> getAllLeagues(@RequestBody String email) {
+		return this.auctionLeagueService.getAllLeagues(email);
+	}
+	
+	@CrossOrigin	
+	@PostMapping(value = "/getAllMyLeagues/", consumes = "application/json", produces = "application/json")
+	public List<AuctionLeague> getAllMyLeagues(@RequestBody String email) {
+		return this.auctionLeagueService.getAllLeagues(email);
+	}
+	
+	@CrossOrigin	
+	@PostMapping(value = "/getAllOtherLeagues/", consumes = "application/json", produces = "application/json")
+	public List<AuctionLeague> getAllOtherLeagues(@RequestBody String email) {
+		return this.auctionLeagueService.getAllLeagues(email);
 	}
 	
 	@CrossOrigin	

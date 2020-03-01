@@ -8,7 +8,11 @@ import com.ff.auction.dto.CreateAuctionDto;
 public interface AuctionLeagueService {
 	public void createAuctionLeague(CreateAuctionDto createAuctionDto);
 
-	public List<AuctionLeague> getAllLeagues();
+	public List<AuctionLeague> getAllLeagues(String email);
+	
+	public List<AuctionLeague> getAllMyLeagues(String email);
+	
+	public List<AuctionLeague> getAllOtherLeagues(String email);
 	
 	public boolean existsByLeagueName(String leagueName);
 }
