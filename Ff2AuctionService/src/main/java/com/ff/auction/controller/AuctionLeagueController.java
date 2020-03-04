@@ -36,15 +36,15 @@ public class AuctionLeagueController {
 	}
 	
 	@CrossOrigin	
-	@PostMapping(value = "/getAllMyLeagues/", consumes = "application/json", produces = "application/json")
-	public List<AuctionLeague> getAllMyLeagues(@RequestBody String email) {
-		return this.auctionLeagueService.getAllLeagues(email);
+	@PostMapping(value = "/getMyLeagues/", consumes = "application/json", produces = "application/json")
+	public List<AuctionLeague> getMyLeagues(@RequestBody String email) {
+		return this.auctionLeagueService.getMyLeagues(email);
 	}
 	
 	@CrossOrigin	
 	@PostMapping(value = "/getAllOtherLeagues/", consumes = "application/json", produces = "application/json")
 	public List<AuctionLeague> getAllOtherLeagues(@RequestBody String email) {
-		return this.auctionLeagueService.getAllLeagues(email);
+		return this.auctionLeagueService.getAllOtherLeagues(email);
 	}
 	
 	@CrossOrigin	

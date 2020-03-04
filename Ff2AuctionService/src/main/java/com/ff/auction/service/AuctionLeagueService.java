@@ -10,7 +10,7 @@ public interface AuctionLeagueService {
 
 	public List<AuctionLeague> getAllLeagues(String email);
 	
-	public List<AuctionLeague> getAllMyLeagues(String email);
+	public List<AuctionLeague> getMyLeagues(String email);
 	
 	public List<AuctionLeague> getAllOtherLeagues(String email);
 	

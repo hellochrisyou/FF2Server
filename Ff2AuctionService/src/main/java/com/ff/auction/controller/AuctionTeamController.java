@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ff.auction.domain.AuctionTeam;
 import com.ff.auction.dto.CreateTeamDto;
 import com.ff.auction.service.AuctionTeamService;
 
@@ -28,15 +29,10 @@ public class AuctionTeamController {
 	@PostMapping(value = "/createTeam/", consumes = "application/json", produces = "application/json")
 	public void createTeam(@RequestBody CreateTeamDto createTeamDto) {
 		this.auctionTeamService.createAuctionTeam(createTeamDto);
-		this.delegateController.delegateCreateTeam(createTeamDto);
 		return;
 	}
 	
-//	@CrossOrigin	
-//	@GetMapping(value = "/getAllTeams/", consumes = "application/json", produces = "application/json")
-//	public List<Team> getAllTeams(@RequestBody UserDto userDto) {
-//		return this.auctionTeamService.getLeagueTeams(userDto);
-//	}
+
 	
 	@CrossOrigin	
 	@GetMapping(value = "/teamNameExists/{name}", consumes = "application/json", produces = "application/json")
@@ -44,3 +40,5 @@ public class AuctionTeamController {
 		return this.auctionTeamService.teamNameExists(name);
 	}
 }
+
+//this.delegateController.delegateCreateTeam(createTeamDto);

@@ -29,6 +29,7 @@ public class AuctionLeague implements Serializable {
 	private String LeagueType = "Auction";
 	private String CurrentBid = "";
 	private String CurrentBidder = "";
+	private String CurrentPlayer = "";
 
 	private List<AuctionTeam> auctionTeams = new ArrayList<AuctionTeam>();
 
@@ -50,7 +51,10 @@ public class AuctionLeague implements Serializable {
 	public String getLeagueId() {
 		return leagueId;
 	}
-
+	@DynamoDBAttribute
+	public String getCurrentPlayer() {
+		return this.CurrentPlayer;
+	}
 	@DynamoDBAttribute
 	public String getLeagueName() {
 		return this.LeagueName;
@@ -124,6 +128,10 @@ public class AuctionLeague implements Serializable {
 
 	public void addAuctionTeam(AuctionTeam auctionTeams) {
 		this.auctionTeams.add(auctionTeams);
+	}
+
+	public void setCurrentPlayer(String currentPlayer) {
+		CurrentPlayer = currentPlayer;
 	}
 
 	public void setTeamCount(String teamCount) {

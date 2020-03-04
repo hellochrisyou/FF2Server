@@ -13,6 +13,8 @@ public class AuctionPlayer implements Serializable {
 	private String Name;
 	private String Team;
     private String Position;
+    private String Bid;
+    private String Points;
     
     public AuctionPlayer(){};
     
@@ -34,6 +36,23 @@ public class AuctionPlayer implements Serializable {
 	public String getPosition() {
 		return Position;
 	}
+	@DynamoDBAttribute
+	public String getBid() {
+		return Bid;
+	}
+	@DynamoDBAttribute
+	public String getPoints() {
+		return Points;
+	}
+	
+	public void setBid(String bid) {
+		Bid = bid;
+	}
+	
+	public void setPoints(String points) {
+		Points = points;
+	}
+
 	public void setName(String name) {
 		this.Name = name;
 	}

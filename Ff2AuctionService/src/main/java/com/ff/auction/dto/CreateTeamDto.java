@@ -9,6 +9,8 @@ public class CreateTeamDto {
 	private String ppr;
 	private String maxPlayers;
 	private String leagueType;
+	private String photoUrl;
+	private String draftPosition;
 	
 	CreateTeamDto() {};
 	
@@ -53,11 +55,27 @@ public class CreateTeamDto {
 		this.ppr = ppr;
 	}
 
+	public String getDraftPosition() {
+		return draftPosition;
+	}
+
+	public void setDraftPosition(String draftPosition) {
+		this.draftPosition = draftPosition;
+	}
+
 	public String getMaxPlayers() {
 		return maxPlayers;
 	}
 	public void setMaxPlayers(String maxPlayers) {
 		this.maxPlayers = maxPlayers;
+	}
+
+	public String getPhotoUrl() {
+		return photoUrl;
+	}
+
+	public void setPhotoUrl(String photoUrl) {
+		this.photoUrl = photoUrl;
 	}
 
 	

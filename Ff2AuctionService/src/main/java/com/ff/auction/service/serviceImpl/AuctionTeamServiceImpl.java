@@ -23,7 +23,8 @@ public class AuctionTeamServiceImpl implements AuctionTeamService{
 		persistentLeague.addAuctionTeam(newAuctionTeam);
 		auctionLeagueRepository.save(persistentLeague);
 	}
-	
+
+	@Override
 	public boolean teamNameExists(String teamName) {
 		List<AuctionLeague> persistentLeague= this.auctionLeagueRepository.findAll();
 		for (AuctionLeague league: persistentLeague) {

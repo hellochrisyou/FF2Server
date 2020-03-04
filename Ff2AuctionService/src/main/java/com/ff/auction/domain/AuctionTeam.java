@@ -15,6 +15,8 @@ public class AuctionTeam implements Serializable {
 	private String teamName;
 	private String email;
 	private String budget;
+	private String photoUrl;
+	private String draftPosition;
 	private List<AuctionPlayer> auctionPlayers;
 	
 
@@ -25,6 +27,7 @@ public class AuctionTeam implements Serializable {
 		this.teamName = createTeamDto.getTeamName();
 		this.budget = createTeamDto.getBudget();
 		this.email = createTeamDto.getEmail();
+		this.photoUrl = createTeamDto.getPhotoUrl();
 	}
 
 	@DynamoDBAttribute
@@ -36,14 +39,24 @@ public class AuctionTeam implements Serializable {
 	public String getBudget() {
 		return this.budget;
 	}
-
+	@DynamoDBAttribute
+	public String getDraftPosition() {
+		return this.draftPosition;
+	}
 	@DynamoDBAttribute
 	public String getTeamName() {
 		return this.teamName;
 	}
 	@DynamoDBAttribute
+	public String getPhotoUrl() {
+		return this.photoUrl;
+	}
+	@DynamoDBAttribute
 	public String getEmail() {
 		return this.email;
+	}
+	public void setDraftPosition(String draftPosition) {
+		this.draftPosition = draftPosition;
 	}
 	public void setTeamName(String teamName) {
 		this.teamName = teamName;
@@ -59,6 +72,10 @@ public class AuctionTeam implements Serializable {
 
 	public void setAuctionPlayers(List<AuctionPlayer> auctionPlayers) {
 		this.auctionPlayers = auctionPlayers;
+	}
+
+	public void setPhotoUrl(String photoUrl) {
+		this.photoUrl = photoUrl;
 	}
 
 	public void setBudget(String budget) {

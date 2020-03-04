@@ -38,7 +38,7 @@ public class AuctionLeagueServiceImpl implements AuctionLeagueService {
 		return returnLeague;
 	}
 	
-	public List<AuctionLeague> getAllMyLeagues(String email) {
+	public List<AuctionLeague> getMyLeagues(String email) {
 		List<AuctionLeague> persistentLeague = auctionLeagueRepository.findAll();
 		List<AuctionLeague> returnLeague = new ArrayList<AuctionLeague>();
 		for (AuctionLeague tmpLeague : persistentLeague) {
@@ -55,9 +55,14 @@ public class AuctionLeagueServiceImpl implements AuctionLeagueService {
 		List<AuctionLeague> persistentLeague = auctionLeagueRepository.findAll();
 		List<AuctionLeague> returnLeague = new ArrayList<AuctionLeague>();
 		for (AuctionLeague tmpLeague : persistentLeague) {
+			if (tmpLeague.getAuctionTeams().size() == 0) {
+				returnLeague.add(tmpLeague);
+				continue;
+			}
 			for (AuctionTeam tmpTeam : tmpLeague.getAuctionTeams()) {
 				if (tmpTeam.getEmail().equals(email) == false) {
 					returnLeague.add(tmpLeague);
+					break;
 				}
 			}
 		}
