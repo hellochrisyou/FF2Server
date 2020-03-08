@@ -117,7 +117,7 @@ public class AuctionLeague implements Serializable {
 
 	public AuctionTeam getTeam(String teamName) {
 		for (AuctionTeam team : this.auctionTeams) {
-			if (team.getTeamName() == teamName) {
+			if (team.getTeamName().equals(teamName)) {
 				return team;
 			}
 		}

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ff.auction.domain.AuctionLeague;
 import com.ff.auction.dto.CreateAuctionDto;
+import com.ff.auction.dto.CreateTeamDto;
+import com.ff.auction.dto.TeamDto;
 import com.ff.auction.service.AuctionLeagueService;
 
 @CrossOrigin(maxAge = 3600)
@@ -51,5 +53,10 @@ public class AuctionLeagueController {
 	@GetMapping(value = "/existsByLeagueName/{name}", consumes = "application/json", produces = "application/json")
 	public boolean leagueNameExists(@PathVariable String name) {
 		return this.auctionLeagueService.existsByLeagueName(name);
+	}
+	@CrossOrigin	
+	@PostMapping(value = "/postReady/", consumes = "application/json", produces = "application/json")
+	public boolean postReady(@RequestBody TeamDto teamDto) {
+		return this.auctionLeagueService.postReady(teamDto);
 	}
 }

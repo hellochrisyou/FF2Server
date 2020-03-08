@@ -17,6 +17,7 @@ public class AuctionTeam implements Serializable {
 	private String budget;
 	private String photoUrl;
 	private String draftPosition;
+	private String isReady = "No";
 	private List<AuctionPlayer> auctionPlayers;
 	
 
@@ -55,6 +56,10 @@ public class AuctionTeam implements Serializable {
 	public String getEmail() {
 		return this.email;
 	}
+	@DynamoDBAttribute
+	public String getIsReady() {
+		return this.isReady;
+	}
 	public void setDraftPosition(String draftPosition) {
 		this.draftPosition = draftPosition;
 	}
@@ -81,4 +86,9 @@ public class AuctionTeam implements Serializable {
 	public void setBudget(String budget) {
 		this.budget = budget;
 	}
+
+	public void setIsReady(String isReady) {
+		this.isReady = isReady;
+	}
+	
 }

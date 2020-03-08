@@ -1,10 +1,8 @@
 package com.ff.auction.dto;
 
 
-public class CreateTeamDto {
+public class CreateTeamDto extends TeamDto {
 	private String email;
-	private String leagueName;
-	private String teamName;
 	private String budget;
 	private String ppr;
 	private String maxPlayers;
@@ -30,18 +28,7 @@ public class CreateTeamDto {
 		this.leagueType = leagueType;
 	}
 
-	public String getLeagueName() {
-		return leagueName;
-	}
-	public void setLeagueName(String leagueName) {
-		this.leagueName = leagueName;
-	}
-	public String getTeamName() {
-		return teamName;
-	}
-	public void setTeamName(String teamName) {
-		this.teamName = teamName;
-	}
+	
 	public String getBudget() {
 		return this.budget;
 	}
@@ -77,7 +64,4 @@ public class CreateTeamDto {
 	public void setPhotoUrl(String photoUrl) {
 		this.photoUrl = photoUrl;
 	}
-
-	
-	
 }

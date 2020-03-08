@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.ff.auction.domain.AuctionLeague;
 import com.ff.auction.domain.AuctionTeam;
 import com.ff.auction.dto.CreateAuctionDto;
+import com.ff.auction.dto.CreateTeamDto;
+import com.ff.auction.dto.TeamDto;
 import com.ff.auction.repository.AuctionLeagueRepository;
 import com.ff.auction.service.AuctionLeagueService;
 
@@ -76,5 +78,18 @@ public class AuctionLeagueServiceImpl implements AuctionLeagueService {
 		} else {
 			return false;
 		}
+	}
+	
+	public boolean postReady(TeamDto teamDto) {
+		AuctionLeague thisLeague = this.auctionLeagueRepository.findByLeagueName(teamDto.getLeagueName());
+		thisLeague.getTeam(teamDto.getTeamName()).setIsReady(teamDto.getIsReady());
+		thisLeague = this.auctionLeagueRepository.save(thisLeague);
+		
+		for (AuctionTeam team: thisLeague.getAuctionTeams()) {
+			if (team.getIsReady() == "No") {
+				return false;
+			}
+		}
+		return true;
 	}
 }
