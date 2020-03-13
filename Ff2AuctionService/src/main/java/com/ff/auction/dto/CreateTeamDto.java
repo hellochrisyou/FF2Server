@@ -10,9 +10,10 @@ public class CreateTeamDto extends TeamDto {
 	private String leagueType;
 	private String photoUrl;
 	private String draftPosition;
-	
-	CreateTeamDto() {};
-	
+
+	CreateTeamDto() {
+	};
+
 	public String getEmail() {
 		return email;
 	}
@@ -29,16 +30,18 @@ public class CreateTeamDto extends TeamDto {
 		this.leagueType = leagueType;
 	}
 
-	
 	public String getBudget() {
 		return this.budget;
 	}
+
 	public void setBudget(String budget) {
 		this.budget = budget;
 	}
+
 	public String getPpr() {
 		return ppr;
 	}
+
 	public void setPpr(String ppr) {
 		this.ppr = ppr;
 	}
@@ -54,6 +57,7 @@ public class CreateTeamDto extends TeamDto {
 	public String getMaxPlayers() {
 		return maxPlayers;
 	}
+
 	public void setMaxPlayers(String maxPlayers) {
 		this.maxPlayers = maxPlayers;
 	}
@@ -91,5 +95,5 @@ public class CreateTeamDto extends TeamDto {
 				&& Objects.equals(maxPlayers, other.maxPlayers) && Objects.equals(photoUrl, other.photoUrl)
 				&& Objects.equals(ppr, other.ppr);
 	}
-	
+
 }
