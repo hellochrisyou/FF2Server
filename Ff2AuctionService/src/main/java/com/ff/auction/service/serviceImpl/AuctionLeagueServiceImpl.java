@@ -96,7 +96,7 @@ public class AuctionLeagueServiceImpl implements AuctionLeagueService {
 		persistentLeague.setStatus("Ongoing");
 		for (AuctionTeam team: persistentLeague.getAuctionTeams()) {
 			if (team.getTeamName().equals(bidDto.getTeamName())) {
-				team.setEndBid("No");
+				team.setEndBid("Yes");
 			}
 		}
 		return this.auctionLeagueRepository.save(persistentLeague);
@@ -106,7 +106,7 @@ public class AuctionLeagueServiceImpl implements AuctionLeagueService {
 	public AuctionLeague makeBid(BidDto bidDto) {
 		AuctionLeague persistentLeague = this.auctionLeagueRepository.findByLeagueName(bidDto.getLeagueName());
 		
-		persistentLeague.getTeam(bidDto.getLeagueName()).setEndBid("No");
+		persistentLeague.getTeam(bidDto.getLeagueName()).setEndBid("Yes");
 		persistentLeague.getTeam(persistentLeague.getCurrentBidder()).setEndBid("No");
 		persistentLeague.setCurrentBidder(bidDto.getTeamName());
 		persistentLeague.setCurrentBid(bidDto.getNewBid());
@@ -117,7 +117,6 @@ public class AuctionLeagueServiceImpl implements AuctionLeagueService {
 				team.setEndBid("No");
 			}
 		}
-		
 		return this.auctionLeagueRepository.save(persistentLeague);
 	}
 	
@@ -133,11 +132,14 @@ public class AuctionLeagueServiceImpl implements AuctionLeagueService {
 				counter++;
 			}
 		}
-		if (counter == persistentLeague.getAuctionTeams().size() - 1) {
+		if (counter == persistentLeague.getAuctionTeams().size()) {
 			AuctionPlayer newPlayer = new AuctionPlayer(bidDto); 
 			persistentLeague.getTeam(bidDto.getTeamName()).addAuctionPlayer(newPlayer);
-			for (AuctionTeam team: persistentLeague.getAuctionTeams()) {
-				persistentLeague.setDraftTurn(persistentLeague.getDraftTurn() + 1);
+			persistentLeague.setDraftTurn(Integer.toString(Integer.parseInt(persistentLeague.getDraftTurn()) + 1));
+			persistentLeague.setCurrentBid("");
+			persistentLeague.setCurrentBidder("");
+			persistentLeague.setCurrentPlayer("");
+			for (AuctionTeam team: persistentLeague.getAuctionTeams()) {				
 				if (team.getDraftPosition().equals(persistentLeague.getDraftTurn())) {
 					team.setEndBid("Yes");
 				} else {

@@ -64,19 +64,19 @@ public class AuctionLeagueController {
 	
 	@CrossOrigin	
 	@PostMapping(value = "/startBid/", consumes = "application/json", produces = "application/json")
-	public void startBid(@RequestBody BidDto bidDto) {
-		this.auctionLeagueService.startBid(bidDto);
+	public AuctionLeague startBid(@RequestBody BidDto bidDto) {
+		return this.auctionLeagueService.startBid(bidDto);
 	}
 	
 	@CrossOrigin	
 	@PostMapping(value = "/makeBid/", consumes = "application/json", produces = "application/json")
-	public void makeBid(@RequestBody BidDto bidDto) {
-		this.auctionLeagueService.makeBid(bidDto);
+	public AuctionLeague makeBid(@RequestBody BidDto bidDto) {
+		return this.auctionLeagueService.makeBid(bidDto);
 	}
 	
 	@CrossOrigin	
 	@PostMapping(value = "/noBid/", consumes = "application/json", produces = "application/json")
-	public void noBid(@RequestBody BidDto bidDto) {
-		this.auctionLeagueService.noBid(bidDto);
+	public AuctionLeague noBid(@RequestBody BidDto bidDto) {
+		return this.auctionLeagueService.noBid(bidDto);
 	}
 }
