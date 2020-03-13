@@ -19,7 +19,7 @@ public class AuctionTeam implements Serializable {
 	private String budget;
 	private String photoUrl;
 	private String draftPosition;
-	private String endBid = "No";
+	private String endBid = "Yes";
 	private List<AuctionPlayer> auctionPlayers = new ArrayList<AuctionPlayer>();
 	
 
