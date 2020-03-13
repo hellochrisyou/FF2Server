@@ -1,10 +1,9 @@
 package com.ff.auction.dto;
 
+import java.util.Objects;
 
-public class CreateTeamDto {
+public class CreateTeamDto extends TeamDto {
 	private String email;
-	private String leagueName;
-	private String teamName;
 	private String budget;
 	private String ppr;
 	private String maxPlayers;
@@ -30,18 +29,7 @@ public class CreateTeamDto {
 		this.leagueType = leagueType;
 	}
 
-	public String getLeagueName() {
-		return leagueName;
-	}
-	public void setLeagueName(String leagueName) {
-		this.leagueName = leagueName;
-	}
-	public String getTeamName() {
-		return teamName;
-	}
-	public void setTeamName(String teamName) {
-		this.teamName = teamName;
-	}
+	
 	public String getBudget() {
 		return this.budget;
 	}
@@ -78,6 +66,30 @@ public class CreateTeamDto {
 		this.photoUrl = photoUrl;
 	}
 
-	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(budget, draftPosition, email, leagueType, maxPlayers, photoUrl, ppr);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof CreateTeamDto)) {
+			return false;
+		}
+		CreateTeamDto other = (CreateTeamDto) obj;
+		return Objects.equals(budget, other.budget) && Objects.equals(draftPosition, other.draftPosition)
+				&& Objects.equals(email, other.email) && Objects.equals(leagueType, other.leagueType)
+				&& Objects.equals(maxPlayers, other.maxPlayers) && Objects.equals(photoUrl, other.photoUrl)
+				&& Objects.equals(ppr, other.ppr);
+	}
 	
 }

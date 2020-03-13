@@ -1,5 +1,7 @@
 package com.ff.auction.dto;
 
+import java.util.Objects;
+
 public class CreateAuctionDto {
 	private String leagueName;
 	private String teamName;
@@ -43,6 +45,25 @@ public class CreateAuctionDto {
 	}
 	public void setMaxPlayers(String maxPlayers) {
 		this.maxPlayers = maxPlayers;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(Budget, leagueName, maxPlayers, ppr, teamName);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof CreateAuctionDto)) {
+			return false;
+		}
+		CreateAuctionDto other = (CreateAuctionDto) obj;
+		return Objects.equals(Budget, other.Budget) && Objects.equals(leagueName, other.leagueName)
+				&& Objects.equals(maxPlayers, other.maxPlayers) && Objects.equals(ppr, other.ppr)
+				&& Objects.equals(teamName, other.teamName);
 	}
 
 	

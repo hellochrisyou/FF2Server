@@ -1,7 +1,9 @@
 package com.ff.auction.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
@@ -17,7 +19,8 @@ public class AuctionTeam implements Serializable {
 	private String budget;
 	private String photoUrl;
 	private String draftPosition;
-	private List<AuctionPlayer> auctionPlayers;
+	private String endBid = "No";
+	private List<AuctionPlayer> auctionPlayers = new ArrayList<AuctionPlayer>();
 	
 
 	public AuctionTeam() {		
@@ -27,7 +30,7 @@ public class AuctionTeam implements Serializable {
 		this.teamName = createTeamDto.getTeamName();
 		this.budget = createTeamDto.getBudget();
 		this.email = createTeamDto.getEmail();
-		this.photoUrl = createTeamDto.getPhotoUrl();
+		this.photoUrl = createTeamDto.getPhotoUrl();		
 	}
 
 	@DynamoDBAttribute
@@ -35,6 +38,11 @@ public class AuctionTeam implements Serializable {
 		return this.auctionPlayers;
 	}
 
+	@DynamoDBAttribute
+	public String getEndBid() {
+		return this.endBid;
+	}
+	
 	@DynamoDBAttribute
 	public String getBudget() {
 		return this.budget;
@@ -55,6 +63,7 @@ public class AuctionTeam implements Serializable {
 	public String getEmail() {
 		return this.email;
 	}
+	
 	public void setDraftPosition(String draftPosition) {
 		this.draftPosition = draftPosition;
 	}
@@ -81,4 +90,29 @@ public class AuctionTeam implements Serializable {
 	public void setBudget(String budget) {
 		this.budget = budget;
 	}
+
+	public void setEndBid(String endBid) {
+		this.endBid = endBid;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(auctionPlayers, budget, draftPosition, email, endBid, photoUrl, teamName);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof AuctionTeam)) {
+			return false;
+		}
+		AuctionTeam other = (AuctionTeam) obj;
+		return Objects.equals(auctionPlayers, other.auctionPlayers) && Objects.equals(budget, other.budget)
+				&& Objects.equals(draftPosition, other.draftPosition) && Objects.equals(email, other.email)
+				&& Objects.equals(endBid, other.endBid) && Objects.equals(photoUrl, other.photoUrl)
+				&& Objects.equals(teamName, other.teamName);
+	}
+	
 }

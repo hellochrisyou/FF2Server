@@ -25,7 +25,6 @@ public class AuctionLeague implements Serializable {
 	private String MaxPlayers;
 	private String Budget = "0";
 	private String Status;
-	private String TeamCount = "0";
 	private String LeagueType = "Auction";
 	private String CurrentBid = "";
 	private String CurrentBidder = "";
@@ -109,15 +108,10 @@ public class AuctionLeague implements Serializable {
 	public String getCurrentBidder() {
 		return CurrentBidder;
 	}
-
-	@DynamoDBAttribute
-	public String getTeamCount() {
-		return TeamCount;
-	}
-
+	
 	public AuctionTeam getTeam(String teamName) {
 		for (AuctionTeam team : this.auctionTeams) {
-			if (team.getTeamName() == teamName) {
+			if (team.getTeamName().equals(teamName)) {
 				return team;
 			}
 		}
@@ -132,10 +126,6 @@ public class AuctionLeague implements Serializable {
 
 	public void setCurrentPlayer(String currentPlayer) {
 		CurrentPlayer = currentPlayer;
-	}
-
-	public void setTeamCount(String teamCount) {
-		TeamCount = teamCount;
 	}
 
 	public void setStatus(String status) {

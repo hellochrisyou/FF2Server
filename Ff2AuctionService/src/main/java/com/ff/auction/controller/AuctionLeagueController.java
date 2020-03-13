@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ff.auction.domain.AuctionLeague;
+import com.ff.auction.dto.BidDto;
 import com.ff.auction.dto.CreateAuctionDto;
+import com.ff.auction.dto.CreateTeamDto;
+import com.ff.auction.dto.TeamDto;
 import com.ff.auction.service.AuctionLeagueService;
 
 @CrossOrigin(maxAge = 3600)
@@ -51,5 +54,29 @@ public class AuctionLeagueController {
 	@GetMapping(value = "/existsByLeagueName/{name}", consumes = "application/json", produces = "application/json")
 	public boolean leagueNameExists(@PathVariable String name) {
 		return this.auctionLeagueService.existsByLeagueName(name);
+	}
+	
+	@CrossOrigin	
+	@PostMapping(value = "/getThisLeague/", consumes = "application/json", produces = "application/json")
+	public AuctionLeague getLeague(@RequestBody String leagueName) {
+		return this.auctionLeagueService.getLeague(leagueName);
+	}
+	
+	@CrossOrigin	
+	@PostMapping(value = "/startBid/", consumes = "application/json", produces = "application/json")
+	public void startBid(@RequestBody BidDto bidDto) {
+		this.auctionLeagueService.startBid(bidDto);
+	}
+	
+	@CrossOrigin	
+	@PostMapping(value = "/makeBid/", consumes = "application/json", produces = "application/json")
+	public void makeBid(@RequestBody BidDto bidDto) {
+		this.auctionLeagueService.makeBid(bidDto);
+	}
+	
+	@CrossOrigin	
+	@PostMapping(value = "/noBid/", consumes = "application/json", produces = "application/json")
+	public void noBid(@RequestBody BidDto bidDto) {
+		this.auctionLeagueService.noBid(bidDto);
 	}
 }
