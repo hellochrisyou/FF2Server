@@ -103,10 +103,10 @@ public class AuctionLeagueServiceImpl implements AuctionLeagueService {
 	}
 	
 	@Override
-	public AuctionLeague makeBid(BidDto bidDto) {
+	public AuctionLeague makeBid(BidDto bidDto) { 
 		AuctionLeague persistentLeague = this.auctionLeagueRepository.findByLeagueName(bidDto.getLeagueName());
 		
-		persistentLeague.getTeam(bidDto.getLeagueName()).setEndBid("Yes");
+		persistentLeague.getTeam(bidDto.getTeamName()).setEndBid("Yes");
 		persistentLeague.getTeam(persistentLeague.getCurrentBidder()).setEndBid("No");
 		persistentLeague.setCurrentBidder(bidDto.getTeamName());
 		persistentLeague.setCurrentBid(bidDto.getNewBid());
@@ -115,6 +115,8 @@ public class AuctionLeagueServiceImpl implements AuctionLeagueService {
 		for (AuctionTeam team: persistentLeague.getAuctionTeams()) {
 			if (!team.getTeamName().equals(bidDto.getTeamName())) {
 				team.setEndBid("No");
+			} else {
+				team.setEndBid("Yes");
 			}
 		}
 		return this.auctionLeagueRepository.save(persistentLeague);
@@ -133,6 +135,12 @@ public class AuctionLeagueServiceImpl implements AuctionLeagueService {
 			}
 		}
 		if (counter == persistentLeague.getAuctionTeams().size()) {
+			// Subtract bid from winning player's budget
+			float currentBudget = Float.parseFloat(persistentLeague.getTeam(persistentLeague.getCurrentBidder()).getBudget());
+			float newBudget = currentBudget - Float.parseFloat(persistentLeague.getCurrentBid()); 
+			persistentLeague.getTeam(persistentLeague.getCurrentBidder()).setBudget(Float.toString(newBudget));
+			
+			// Prepare for next round
 			AuctionPlayer newPlayer = new AuctionPlayer(bidDto); 
 			persistentLeague.getTeam(bidDto.getTeamName()).addAuctionPlayer(newPlayer);
 			persistentLeague.setDraftTurn(Integer.toString(Integer.parseInt(persistentLeague.getDraftTurn()) + 1));

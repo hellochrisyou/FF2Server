@@ -19,6 +19,7 @@ public class AuctionTeamServiceImpl implements AuctionTeamService{
 	@Override
 	public void createAuctionTeam(CreateTeamDto createTeamDto) {
 		AuctionLeague persistentLeague= this.auctionLeagueRepository.findByLeagueName(createTeamDto.getLeagueName());
+		createTeamDto.setBudget(persistentLeague.getTotalBudget());
 		AuctionTeam newAuctionTeam = new AuctionTeam(createTeamDto);
 		newAuctionTeam.setDraftPosition(Integer.toString(persistentLeague.getAuctionTeams().size() + 1));
 		persistentLeague.addAuctionTeam(newAuctionTeam);
