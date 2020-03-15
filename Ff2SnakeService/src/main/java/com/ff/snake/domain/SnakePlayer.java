@@ -4,43 +4,55 @@ import java.io.Serializable;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
-import com.ff.snake.dto.CreateSnakeDto;
+import com.ff.snake.dto.DraftDto;
 
 @DynamoDBDocument
 public class SnakePlayer implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private String Name;
-	private String Team;
-    private String Position;
+	private String name;
+	private String team;
+    private String position;
+    private String points;
     
     public SnakePlayer(){};
     
-    public SnakePlayer(CreateSnakeDto createSnakeDto) {
-		// To do
+    public SnakePlayer(DraftDto draftDto) {
+		this.name = draftDto.getPlayerName();
+		this.team = draftDto.getTeam();
+		this.position = draftDto.getPosition();
+		this.team = draftDto.getTeam();
 	}
 
 	@DynamoDBAttribute
 	public String getName() {
-		return Name;
+		return this.name;
 	}
 	@DynamoDBAttribute
 	public String getTeam() {
-		return Team;
+		return this.team;
 	}
 	@DynamoDBAttribute
 	public String getPosition() {
-		return Position;
+		return this.position;
+	}
+	@DynamoDBAttribute
+	public String getPoints() {
+		return this.points;
 	}
 	public void setName(String name) {
-		this.Name = name;
+		this.name = name;
 	}
 	public void setTeam(String footballTeam) {
-		this.Team = footballTeam;
+		this.team = footballTeam;
 	}
 	public void setPosition(String position) {
-		this.Position = position;
+		this.position = position;
+	}
+
+	public void setPoints(String points) {
+		this.points = points;
 	}
 
 }

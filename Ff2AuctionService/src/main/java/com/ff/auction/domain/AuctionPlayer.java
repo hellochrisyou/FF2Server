@@ -22,8 +22,8 @@ public class AuctionPlayer implements Serializable {
     public AuctionPlayer(BidDto bidDto) {
 		this.Name = bidDto.getPlayerName();
 		this.Team = bidDto.getTeam();
-//		this.Position = bidDto.getPosition();
-//		this.Bid = bidDto.getNewBid();
+		this.Position = bidDto.getPosition();
+		this.Bid = bidDto.getNewBid();
 		this.Position = "QB";
 		this.Team = "Dolphins";
 	}

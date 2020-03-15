@@ -1,6 +1,7 @@
 package com.ff.snake.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.lang.NonNull;
@@ -11,30 +12,30 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import com.ff.snake.dto.CreateSnakeDto;
 
-@DynamoDBTable(tableName = "AuctionLeague")
+@DynamoDBTable(tableName = "SnakeLeague")
 public class SnakeLeague implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
 	private String leagueId;
-	private String LeagueName;
-	private String DraftTurn = "1";
-	private String DraftRound = "1";
-    private String PPR;     
-    private String MaxPlayers;
-	private String Status = "Created";
-	private String LeagueType = "Snake";
+	private String leagueName;
+	private String draftTurn = "1";
+	private String draftRound = "1";
+    private String ppr = "";     
+    private String maxPlayers;
+	private String status = "Created";
+	private String leagueType = "Snake";
 	
-    private List<SnakeTeam> snakeTeams;
+    private List<SnakeTeam> snakeTeams = new ArrayList<SnakeTeam>();
     
     public SnakeLeague() {
     }
     
     public SnakeLeague(CreateSnakeDto createDto) {
-    	this.LeagueName = createDto.getLeagueName();
-    	this.PPR = createDto.getPpr();
-		this.MaxPlayers =	 createDto.getMaxPlayers();
-		this.Status = "Created";
+    	this.leagueName = createDto.getLeagueName();
+    	this.ppr = createDto.getPpr();
+		this.maxPlayers =	 createDto.getMaxPlayers();
+		this.status = "Created";
     }
     
     // Getters
@@ -46,34 +47,37 @@ public class SnakeLeague implements Serializable {
 	}
     @DynamoDBAttribute
     public String getLeagueName() {
-        return this.LeagueName;
+        return this.leagueName;
     }
-    @DynamoDBAttribute
-    public String getPPR() {
-        return this.PPR;
-    } 
+	@DynamoDBAttribute
+	public String getPpr() {
+		return this.ppr;
+	}
     @DynamoDBAttribute
     public String getMaxPlayers() {
-        return this.MaxPlayers;
+        return this.maxPlayers;
     }
     
     @DynamoDBAttribute
 	public String getDraftTurn() {
-		return DraftTurn;
+		return this.draftTurn;
 	}
     @DynamoDBAttribute
    	public String getDraftRound() {
-   		return DraftRound;
+   		return this.draftRound;
    	}
     @DynamoDBAttribute
     public String getStatus() {
-    	return this.Status;
+    	return this.status;
     }
     @DynamoDBAttribute
 	public String getLeagueType() {
-		return LeagueType;
+		return this.leagueType;
 	}
-
+    @DynamoDBAttribute
+    public List<SnakeTeam> getSnakeTeams() {
+    	return this.snakeTeams;
+    }
 	public SnakeTeam getTeam(String teamName) {
     	for (SnakeTeam team : this.snakeTeams) {
     		if (team.getTeamName() == teamName) {
@@ -85,41 +89,46 @@ public class SnakeLeague implements Serializable {
     
 	// Setters
     
-    public void addAuctionTeam(SnakeTeam snakeTeams) {
+    public void addSnakeTeam(SnakeTeam snakeTeams) {
     	this.snakeTeams.add(snakeTeams);
     }
-	public void setStatus(String status) {
-		this.Status = status;
-	}
+
 	public void setLeagueId(String leagueId) {
 		this.leagueId = leagueId;
 	}
 
 	public void setLeagueName(String leagueName) {
-		this.LeagueName = leagueName;
+		this.leagueName = leagueName;
 	}
 
 	public void setDraftTurn(String draftTurn) {
-		this.DraftTurn = draftTurn;
-	}
-	
-	public void setName(String leagueName) {
-		this.LeagueName = leagueName;
-	}
-    
-	public void setDraftRound(String draftRound) {
-		DraftRound = draftRound;
+		this.draftTurn = draftTurn;
 	}
 
-	public void setPPR(String pPR) {
-		this.PPR = pPR;
+	public void setDraftRound(String draftRound) {
+		this.draftRound = draftRound;
 	}
-    
-	public void setLeagueType(String leagueType) {
-		LeagueType = leagueType;
+
+	public void setPpr(String ppr) {
+		this.ppr = ppr;
 	}
 
 	public void setMaxPlayers(String maxPlayers) {
-		this.MaxPlayers = maxPlayers;
+		this.maxPlayers = maxPlayers;
 	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public void setLeagueType(String leagueType) {
+		this.leagueType = leagueType;
+	}
+
+	public void setSnakeTeams(List<SnakeTeam> snakeTeams) {
+		this.snakeTeams = snakeTeams;
+	}
+
+
+	
 }

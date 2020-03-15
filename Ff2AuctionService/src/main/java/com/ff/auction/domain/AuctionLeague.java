@@ -18,17 +18,19 @@ public class AuctionLeague implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String leagueId;
-	private String LeagueName;
-	private String DraftTurn = "1";
-	private String DraftRound = "1";
-	private String Ppr;
-	private String MaxPlayers;
+	private String leagueName;
+	private String draftTurn = "1";
+	private String draftRound = "1";
+	private String ppr;
+	private String maxPlayers;
 	private String totalBudget = "0";
-	private String Status;
-	private String LeagueType = "Auction";
-	private String CurrentBid = "";
-	private String CurrentBidder = "";
-	private String CurrentPlayer = "";
+	private String status;
+	private String leagueType = "Auction";
+	private String currentBid = "";
+	private String currentBidder = "";
+	private String currentPlayer = "";
+	private String currentPlayerPosition = "";
+	private String currentPlayerTeam = "";
 
 	private List<AuctionTeam> auctionTeams = new ArrayList<AuctionTeam>();
 
@@ -36,11 +38,13 @@ public class AuctionLeague implements Serializable {
 	}
 
 	public AuctionLeague(CreateAuctionDto createAuctionDto) {
-		this.LeagueName = createAuctionDto.getLeagueName();
-		this.Ppr = createAuctionDto.getPpr();
+		this.leagueName = createAuctionDto.getLeagueName();
+		this.ppr = createAuctionDto.getPpr();
 		this.totalBudget = createAuctionDto.getBudget();
-		this.MaxPlayers = createAuctionDto.getMaxPlayers();
-		this.Status = "Created";
+		this.maxPlayers = createAuctionDto.getMaxPlayers();
+		this.currentPlayerPosition = createAuctionDto.getPosition();
+		this.currentPlayerTeam = createAuctionDto.getTeam();
+		this.status = "Created";
 	}
 
 	// Getters
@@ -52,16 +56,23 @@ public class AuctionLeague implements Serializable {
 	}
 	@DynamoDBAttribute
 	public String getCurrentPlayer() {
-		return this.CurrentPlayer;
+		return this.currentPlayer;
 	}
 	@DynamoDBAttribute
 	public String getLeagueName() {
-		return this.LeagueName;
+		return this.leagueName;
 	}
-
+	@DynamoDBAttribute
+	public String getCurrentPlayerPosition() {
+		return this.currentPlayerPosition;
+	}
+	@DynamoDBAttribute
+	public String getCurrentPlayerTeam() {
+		return this.currentPlayerTeam;
+	}
 	@DynamoDBAttribute
 	public String getPpr() {
-		return this.Ppr;
+		return this.ppr;
 	}
 
 	@DynamoDBAttribute
@@ -71,7 +82,7 @@ public class AuctionLeague implements Serializable {
 
 	@DynamoDBAttribute
 	public String getMaxPlayers() {
-		return this.MaxPlayers;
+		return this.maxPlayers;
 	}
 
 	@DynamoDBAttribute
@@ -81,32 +92,32 @@ public class AuctionLeague implements Serializable {
 
 	@DynamoDBAttribute
 	public String getDraftTurn() {
-		return DraftTurn;
+		return draftTurn;
 	}
 
 	@DynamoDBAttribute
 	public String getDraftRound() {
-		return DraftRound;
+		return draftRound;
 	}
 
 	@DynamoDBAttribute
 	public String getStatus() {
-		return this.Status;
+		return this.status;
 	}
 
 	@DynamoDBAttribute
 	public String getLeagueType() {
-		return LeagueType;
+		return this.leagueType;
 	}
 
 	@DynamoDBAttribute
 	public String getCurrentBid() {
-		return CurrentBid;
+		return this.currentBid;
 	}
 
 	@DynamoDBAttribute
 	public String getCurrentBidder() {
-		return CurrentBidder;
+		return this.currentBidder;
 	}
 	
 	public AuctionTeam getTeam(String teamName) {
@@ -125,11 +136,11 @@ public class AuctionLeague implements Serializable {
 	}
 
 	public void setCurrentPlayer(String currentPlayer) {
-		CurrentPlayer = currentPlayer;
+		this.currentPlayer = currentPlayer;
 	}
 
 	public void setStatus(String status) {
-		this.Status = status;
+		this.status = status;
 	}
 
 	public void setLeagueId(String leagueId) {
@@ -137,39 +148,35 @@ public class AuctionLeague implements Serializable {
 	}
 
 	public void setCurrentBid(String currentBid) {
-		CurrentBid = currentBid;
+		this.currentBid = currentBid;
 	}
 
 	public void setCurrentBidder(String currentBidder) {
-		CurrentBidder = currentBidder;
-	}
-
-	public void setLeagueName(String leagueName) {
-		this.LeagueName = leagueName;
+		this.currentBidder = currentBidder;
 	}
 
 	public void setDraftTurn(String draftTurn) {
-		this.DraftTurn = draftTurn;
+		this.draftTurn = draftTurn;
 	}
 
 	public void setAuctionTeams(List<AuctionTeam> auctionTeams) {
 		this.auctionTeams = auctionTeams;
 	}
 
-	public void setName(String leagueName) {
-		this.LeagueName = leagueName;
+	public void setLeagueName(String leagueName) {
+		this.leagueName = leagueName;
 	}
 
 	public void setDraftRound(String draftRound) {
-		DraftRound = draftRound;
+		this.draftRound = draftRound;
 	}
 
 	public void setPpr(String ppr) {
-		this.Ppr = ppr;
+		this.ppr = ppr;
 	}
 
 	public void setLeagueType(String leagueType) {
-		LeagueType = leagueType;
+		this.leagueType = leagueType;
 	}
 
 	public void setTotalBudget(String totalBudget) {
@@ -177,6 +184,114 @@ public class AuctionLeague implements Serializable {
 	}
 
 	public void setMaxPlayers(String maxPlayers) {
-		this.MaxPlayers = maxPlayers;
+		this.maxPlayers = maxPlayers;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((ppr == null) ? 0 : ppr.hashCode());
+		result = prime * result + ((auctionTeams == null) ? 0 : auctionTeams.hashCode());
+		result = prime * result + ((currentBid == null) ? 0 : currentBid.hashCode());
+		result = prime * result + ((currentBidder == null) ? 0 : currentBidder.hashCode());
+		result = prime * result + ((currentPlayer == null) ? 0 : currentPlayer.hashCode());
+		result = prime * result + ((currentPlayerPosition == null) ? 0 : currentPlayerPosition.hashCode());
+		result = prime * result + ((currentPlayerTeam == null) ? 0 : currentPlayerTeam.hashCode());
+		result = prime * result + ((draftRound == null) ? 0 : draftRound.hashCode());
+		result = prime * result + ((draftTurn == null) ? 0 : draftTurn.hashCode());
+		result = prime * result + ((leagueId == null) ? 0 : leagueId.hashCode());
+		result = prime * result + ((leagueName == null) ? 0 : leagueName.hashCode());
+		result = prime * result + ((leagueType == null) ? 0 : leagueType.hashCode());
+		result = prime * result + ((maxPlayers == null) ? 0 : maxPlayers.hashCode());
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
+		result = prime * result + ((totalBudget == null) ? 0 : totalBudget.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof AuctionLeague))
+			return false;
+		AuctionLeague other = (AuctionLeague) obj;
+		if (ppr == null) {
+			if (other.ppr != null)
+				return false;
+		} else if (!ppr.equals(other.ppr))
+			return false;
+		if (auctionTeams == null) {
+			if (other.auctionTeams != null)
+				return false;
+		} else if (!auctionTeams.equals(other.auctionTeams))
+			return false;
+		if (currentBid == null) {
+			if (other.currentBid != null)
+				return false;
+		} else if (!currentBid.equals(other.currentBid))
+			return false;
+		if (currentBidder == null) {
+			if (other.currentBidder != null)
+				return false;
+		} else if (!currentBidder.equals(other.currentBidder))
+			return false;
+		if (currentPlayer == null) {
+			if (other.currentPlayer != null)
+				return false;
+		} else if (!currentPlayer.equals(other.currentPlayer))
+			return false;
+		if (currentPlayerPosition == null) {
+			if (other.currentPlayerPosition != null)
+				return false;
+		} else if (!currentPlayerPosition.equals(other.currentPlayerPosition))
+			return false;
+		if (currentPlayerTeam == null) {
+			if (other.currentPlayerTeam != null)
+				return false;
+		} else if (!currentPlayerTeam.equals(other.currentPlayerTeam))
+			return false;
+		if (draftRound == null) {
+			if (other.draftRound != null)
+				return false;
+		} else if (!draftRound.equals(other.draftRound))
+			return false;
+		if (draftTurn == null) {
+			if (other.draftTurn != null)
+				return false;
+		} else if (!draftTurn.equals(other.draftTurn))
+			return false;
+		if (leagueId == null) {
+			if (other.leagueId != null)
+				return false;
+		} else if (!leagueId.equals(other.leagueId))
+			return false;
+		if (leagueName == null) {
+			if (other.leagueName != null)
+				return false;
+		} else if (!leagueName.equals(other.leagueName))
+			return false;
+		if (leagueType == null) {
+			if (other.leagueType != null)
+				return false;
+		} else if (!leagueType.equals(other.leagueType))
+			return false;
+		if (maxPlayers == null) {
+			if (other.maxPlayers != null)
+				return false;
+		} else if (!maxPlayers.equals(other.maxPlayers))
+			return false;
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		} else if (!status.equals(other.status))
+			return false;
+		if (totalBudget == null) {
+			if (other.totalBudget != null)
+				return false;
+		} else if (!totalBudget.equals(other.totalBudget))
+			return false;
+		return true;
+	}
+	
 }

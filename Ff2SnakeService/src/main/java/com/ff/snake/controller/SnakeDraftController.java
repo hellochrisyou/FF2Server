@@ -30,9 +30,15 @@ public class SnakeDraftController {
 	}
 	
 	@CrossOrigin	
-	@GetMapping(value = "/getAllLeagues/", consumes = "application/json", produces = "application/json")
-	public List<SnakeLeague> getAllLeagues() {
-		return this.snakeLeagueService.getAllLeagues();
+	@PostMapping(value = "/getAllLeagues/", consumes = "application/json", produces = "application/json")
+	public List<SnakeLeague> getAllLeagues(@RequestBody String email) {
+		return this.snakeLeagueService.getAllLeagues(email);
+	}
+	
+	@CrossOrigin	
+	@PostMapping(value = "/getMyLeagues/", consumes = "application/json", produces = "application/json")
+	public List<SnakeLeague> getMyLeagues(@RequestBody String email) {
+		return this.snakeLeagueService.getMyLeagues(email);
 	}
 	
 	@CrossOrigin	
