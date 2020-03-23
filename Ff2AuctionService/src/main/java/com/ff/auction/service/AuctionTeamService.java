@@ -1,8 +1,5 @@
 package com.ff.auction.service;
 
-import java.util.List;
-
-import com.ff.auction.domain.AuctionTeam;
 import com.ff.auction.dto.CreateTeamDto;
 
 public interface AuctionTeamService {

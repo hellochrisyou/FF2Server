@@ -1,7 +1,5 @@
 package com.ff.auction.dto;
 
-import java.util.Objects;
-
 public class CreateAuctionDto {
 	private String leagueName;
 	private String teamName;
@@ -82,7 +80,9 @@ public class CreateAuctionDto {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (!(obj instanceof CreateAuctionDto))
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
 			return false;
 		CreateAuctionDto other = (CreateAuctionDto) obj;
 		if (Budget == null) {
@@ -122,6 +122,8 @@ public class CreateAuctionDto {
 			return false;
 		return true;
 	}
+
+
 
 	
 	
