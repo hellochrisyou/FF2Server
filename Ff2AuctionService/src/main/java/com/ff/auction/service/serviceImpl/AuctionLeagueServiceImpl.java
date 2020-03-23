@@ -11,8 +11,6 @@ import com.ff.auction.domain.AuctionPlayer;
 import com.ff.auction.domain.AuctionTeam;
 import com.ff.auction.dto.BidDto;
 import com.ff.auction.dto.CreateAuctionDto;
-import com.ff.auction.dto.CreateTeamDto;
-import com.ff.auction.dto.TeamDto;
 import com.ff.auction.repository.AuctionLeagueRepository;
 import com.ff.auction.service.AuctionLeagueService;
 
@@ -74,8 +72,7 @@ public class AuctionLeagueServiceImpl implements AuctionLeagueService {
 	}
 
 	public AuctionLeague getLeague(String leagueName) {
-		AuctionLeague returnLeague = this.auctionLeagueRepository.findByLeagueName(leagueName);
-		return returnLeague;
+		return this.auctionLeagueRepository.findByLeagueName(leagueName);
 	}
 	
 	@Override

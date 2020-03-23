@@ -18,29 +18,29 @@ public class AuctionLeague implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String leagueId;
-	private String LeagueName;
-	private String DraftTurn = "1";
-	private String DraftRound = "1";
-	private String Ppr;
-	private String MaxPlayers;
-	private String Budget = "0";
-	private String Status;
-	private String LeagueType = "Auction";
-	private String CurrentBid = "";
-	private String CurrentBidder = "";
-	private String CurrentPlayer = "";
+	private String leagueName;
+	private String draftTurn = "1";
+	private String draftRound = "1";
+	private String ppr;
+	private String maxPlayers;
+	private String budget = "0";
+	private String status;
+	private String leagueType = "Auction";
+	private String currentBid = "";
+	private String currentBidder = "";
+	private String currentPlayer = "";
 
-	private List<AuctionTeam> auctionTeams = new ArrayList<AuctionTeam>();
+	private List<AuctionTeam> auctionTeams = new ArrayList<>();
 
 	public AuctionLeague() {
 	}
 
 	public AuctionLeague(CreateAuctionDto createAuctionDto) {
-		this.LeagueName = createAuctionDto.getLeagueName();
-		this.Ppr = createAuctionDto.getPpr();
-		this.Budget = createAuctionDto.getBudget();
-		this.MaxPlayers = createAuctionDto.getMaxPlayers();
-		this.Status = "Created";
+		this.leagueName = createAuctionDto.getLeagueName();
+		this.ppr = createAuctionDto.getPpr();
+		this.budget = createAuctionDto.getBudget();
+		this.maxPlayers = createAuctionDto.getMaxPlayers();
+		this.status = "Created";
 	}
 
 	// Getters
@@ -52,61 +52,61 @@ public class AuctionLeague implements Serializable {
 	}
 	@DynamoDBAttribute
 	public String getCurrentPlayer() {
-		return this.CurrentPlayer;
+		return this.currentPlayer;
 	}
 	@DynamoDBAttribute
 	public String getLeagueName() {
-		return this.LeagueName;
+		return this.leagueName;
 	}
 
 	@DynamoDBAttribute
 	public String getPpr() {
-		return this.Ppr;
+		return this.ppr;
 	}
 
 	@DynamoDBAttribute
 	public String getBudget() {
-		return this.Budget;
+		return this.budget;
 	}
 
 	@DynamoDBAttribute
 	public String getMaxPlayers() {
-		return this.MaxPlayers;
+		return this.maxPlayers;
 	}
 
 	@DynamoDBAttribute
 	public List<AuctionTeam> getAuctionTeams() {
-		return auctionTeams;
+		return this.auctionTeams;
 	}
 
 	@DynamoDBAttribute
 	public String getDraftTurn() {
-		return DraftTurn;
+		return this.draftTurn;
 	}
 
 	@DynamoDBAttribute
 	public String getDraftRound() {
-		return DraftRound;
+		return this.draftRound;
 	}
 
 	@DynamoDBAttribute
 	public String getStatus() {
-		return this.Status;
+		return this.status;
 	}
 
 	@DynamoDBAttribute
 	public String getLeagueType() {
-		return LeagueType;
+		return this.leagueType;
 	}
 
 	@DynamoDBAttribute
 	public String getCurrentBid() {
-		return CurrentBid;
+		return this.currentBid;
 	}
 
 	@DynamoDBAttribute
 	public String getCurrentBidder() {
-		return CurrentBidder;
+		return this.currentBidder;
 	}
 	
 	public AuctionTeam getTeam(String teamName) {
@@ -125,11 +125,11 @@ public class AuctionLeague implements Serializable {
 	}
 
 	public void setCurrentPlayer(String currentPlayer) {
-		CurrentPlayer = currentPlayer;
+		this.currentPlayer = currentPlayer;
 	}
 
 	public void setStatus(String status) {
-		this.Status = status;
+		this.status = status;
 	}
 
 	public void setLeagueId(String leagueId) {
@@ -137,46 +137,42 @@ public class AuctionLeague implements Serializable {
 	}
 
 	public void setCurrentBid(String currentBid) {
-		CurrentBid = currentBid;
+		this.currentBid = currentBid;
 	}
 
 	public void setCurrentBidder(String currentBidder) {
-		CurrentBidder = currentBidder;
+		this.currentBidder = currentBidder;
 	}
 
 	public void setLeagueName(String leagueName) {
-		this.LeagueName = leagueName;
+		this.leagueName = leagueName;
 	}
 
 	public void setDraftTurn(String draftTurn) {
-		this.DraftTurn = draftTurn;
+		this.draftTurn = draftTurn;
 	}
 
 	public void setAuctionTeams(List<AuctionTeam> auctionTeams) {
 		this.auctionTeams = auctionTeams;
 	}
 
-	public void setName(String leagueName) {
-		this.LeagueName = leagueName;
-	}
-
 	public void setDraftRound(String draftRound) {
-		DraftRound = draftRound;
+		this.draftRound = draftRound;
 	}
 
 	public void setPpr(String ppr) {
-		this.Ppr = ppr;
+		this.ppr = ppr;
 	}
 
 	public void setLeagueType(String leagueType) {
-		LeagueType = leagueType;
+		this.leagueType = leagueType;
 	}
 
 	public void setBudget(String budget) {
-		this.Budget = budget;
+		this.budget = budget;
 	}
 
 	public void setMaxPlayers(String maxPlayers) {
-		this.MaxPlayers = maxPlayers;
+		this.maxPlayers = maxPlayers;
 	}
 }

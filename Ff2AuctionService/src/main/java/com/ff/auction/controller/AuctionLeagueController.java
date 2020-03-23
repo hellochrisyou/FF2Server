@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ff.auction.domain.AuctionLeague;
 import com.ff.auction.dto.BidDto;
 import com.ff.auction.dto.CreateAuctionDto;
-import com.ff.auction.dto.CreateTeamDto;
-import com.ff.auction.dto.TeamDto;
 import com.ff.auction.service.AuctionLeagueService;
 
 @CrossOrigin(maxAge = 3600)

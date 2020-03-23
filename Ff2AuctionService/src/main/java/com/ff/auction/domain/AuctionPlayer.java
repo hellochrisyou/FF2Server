@@ -11,60 +11,59 @@ public class AuctionPlayer implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private String Name;
-	private String Team = "";
-    private String Position = "";
-    private String Bid = "";
-    private String Points = "";
+	private String name;
+	private String team = "";
+    private String position = "";
+    private String bid = "";
+    private String points = "";
     
     public AuctionPlayer(){};
     
     public AuctionPlayer(BidDto bidDto) {
-		this.Name = bidDto.getPlayerName();
-		this.Team = bidDto.getTeam();
-//		this.Position = bidDto.getPosition();
-//		this.Bid = bidDto.getNewBid();
-		this.Position = "QB";
-		this.Team = "Dolphins";
+		this.name = bidDto.getPlayerName();
+		this.team = bidDto.getTeam();
+		this.position = bidDto.getPosition();
+		this.bid = bidDto.getNewBid();
+		this.team = "Dolphins";
 	}
 
 	@DynamoDBAttribute
 	public String getName() {
-		return Name;
+		return name;
 	}
 	@DynamoDBAttribute
 	public String getTeam() {
-		return Team;
+		return team;
 	}
 	@DynamoDBAttribute
 	public String getPosition() {
-		return Position;
+		return position;
 	}
 	@DynamoDBAttribute
 	public String getBid() {
-		return Bid;
+		return bid;
 	}
 	@DynamoDBAttribute
 	public String getPoints() {
-		return Points;
+		return points;
 	}
 	
 	public void setBid(String bid) {
-		Bid = bid;
+		this.bid = bid;
 	}
 	
 	public void setPoints(String points) {
-		Points = points;
+		this.points = points;
 	}
 
 	public void setName(String name) {
-		this.Name = name;
+		this.name = name;
 	}
 	public void setTeam(String footballTeam) {
-		this.Team = footballTeam;
+		this.team = footballTeam;
 	}
 	public void setPosition(String position) {
-		this.Position = position;
+		this.position = position;
 	}
 
 }
