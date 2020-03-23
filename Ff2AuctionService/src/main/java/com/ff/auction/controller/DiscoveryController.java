@@ -22,5 +22,4 @@ public class DiscoveryController {
 			@PathVariable String applicationName) {
 		return this.discoveryClient.getInstances(applicationName);
 	}
-
 }
